@@ -13,6 +13,8 @@ class Button:
     QuestionMark = u'\U00002754'
     MarkWarning = u'\U000026A0'
     NoEntry = u'\U000026D4'
+    Like = u'\U0001F44D'
+    Dislike = u'\U0001F44E\U0001F3FF'
 
 
 class Country:
