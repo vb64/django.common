@@ -1,15 +1,26 @@
 # -*- coding: utf-8 -*-
 
 from django.utils import translation
+from emoji import Country
 
 COOKIE_NAME = 'lang'
 DEFAULT_CODE = 'en'
+
 LANGUAGES = {
     'en': 'English',
     'ru': 'Русский',
 }
 
+FLAGS = {
+    'en': Country.UnitedKingdom,
+    'ru': Country.Russia,
+}
+
 languages = [x for x in LANGUAGES.keys() if x != 'en']
+
+
+def flag_text(lang):
+    return FLAGS.get(lang, '') + u' ' + LANGUAGES.get(lang, '')
 
 
 def get_lang(code):
