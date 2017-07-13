@@ -23,6 +23,10 @@ def flag_text(lang):
     return FLAGS.get(lang, '') + u' ' + LANGUAGES.get(lang, '')
 
 
+def fake_gettext(text):
+    return text
+
+
 def get_lang(code):
     if not code:
         return ''
