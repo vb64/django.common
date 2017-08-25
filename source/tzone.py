@@ -15,6 +15,7 @@ def for_country(country_code):
     return {tz: name(tz, dt=d) for tz in get_global('territory_zones')[country_code]}
 
 
+# https://www.complang.tuwien.ac.at/doc/python-babel/dates.html
 def dump(dt, tz_code, mask):
     return format_datetime(dt, mask, tzinfo=make_timezone(tz_code))
 
