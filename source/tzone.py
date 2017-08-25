@@ -16,9 +16,16 @@ def for_country(country_code):
 
 
 def dump(dt, tz_code, mask):
-    try:
-        tz = get_timezone(tz_code)
-    except:
-        tz = UTC
+    return format_datetime(dt, mask, tzinfo=make_timezone(tz_code))
 
-    return format_datetime(dt, mask, tzinfo=tz)
+
+def make_timezone(tz_code):
+    try:
+        return get_timezone(tz_code)
+    except:
+        return UTC
+
+
+def to_local(utc_dt, tz_code):
+    y, m, d, h, mm = format_datetime(utc_dt, "yyyy MM dd HH mm", tzinfo=make_timezone(tz_code)).split()
+    return datetime(int(y), int(m), int(d), int(h), int(mm))
