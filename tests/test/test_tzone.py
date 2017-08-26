@@ -2,7 +2,7 @@
 from datetime import datetime
 
 from babel.dates import UTC
-from tzone import dump, make_timezone, to_local
+from tzone import dump, make_timezone, to_local, from_local
 from . import TestCase
 
 
@@ -20,6 +20,10 @@ class TestCaseTZ(TestCase):
     def test_to_local(self):
         self.assertEqual(to_local(self.dt, ''), self.dt)
         self.assertEqual(to_local(self.dt, 'Europe/Moscow'), datetime(2017, 8, 24, 3, 0))
+
+    def test_from_local(self):
+        self.assertEqual(from_local(self.dt, ''), self.dt)
+        self.assertEqual(from_local(self.dt, 'Europe/Moscow'), datetime(2017, 8, 23, 21, 0))
 
     def test_make_timezone(self):
         self.assertEqual(make_timezone(''), UTC)

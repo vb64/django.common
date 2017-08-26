@@ -30,3 +30,9 @@ def make_timezone(tz_code):
 def to_local(utc_dt, tz_code):
     y, m, d, h, mm = format_datetime(utc_dt, "yyyy MM dd HH mm", tzinfo=make_timezone(tz_code)).split()
     return datetime(int(y), int(m), int(d), int(h), int(mm))
+
+
+def from_local(loc_dt, tz_code):
+    dt = make_timezone(tz_code).localize(loc_dt)
+    y, m, d, h, mm = format_datetime(dt, "yyyy MM dd HH mm", tzinfo=UTC).split()
+    return datetime(int(y), int(m), int(d), int(h), int(mm))
