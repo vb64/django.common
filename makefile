@@ -18,8 +18,7 @@ tests: flake8
 	@make -C tests
 
 clean:
-	make -C source clean
+	-$(DEL) source/*.pyc >nul
 
 setup:
 	@$(PYTHON) -m pip install -r requirements.txt
-	@$(PYTHON) -m pip install coverage
