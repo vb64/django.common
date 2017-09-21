@@ -24,6 +24,14 @@ class Button:
     Telephone = u'\U0000260E'
     HammerWork = u'\U00002692'
     WrenchWork = u'\U0001F527'
+    Worker = u'\U0001F477'
+    ManShadow = u'\U0001F464'
+    Money = u'\U0001F4B0'
+    Calendar = u'\U0001F4C5'
+    Clipboard = u'\U0001F4CB'
+    WasteBasket = u'\U0001F5D1'
+    ChequeredFlag = u'\U0001F3C1'
+    Man = u'\U0001F468'
 
 
 class Country:
