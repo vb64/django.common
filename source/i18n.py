@@ -30,7 +30,7 @@ def fake_gettext(text):
 def get_lang(code):
     if not code:
         return ''
-    for l in languages:
+    for l in LANGUAGES.keys():
         if l in code:
             return l
     return ''
