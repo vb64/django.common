@@ -26,6 +26,7 @@ class Button:
     WrenchWork = u'\U0001F527'
     Worker = u'\U0001F477'
     ManShadow = u'\U0001F464'
+    GroupShadow = u'\U0001F465'
     Money = u'\U0001F4B0'
     Calendar = u'\U0001F4C5'
     Clipboard = u'\U0001F4CB'
