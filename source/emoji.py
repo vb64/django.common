@@ -10,6 +10,8 @@ class Button:
     RightArrowDown = u'\U00002935'
     CrossMarkRed = u'\U0000274C'
     CheckMark = u'\U00002714'
+    CheckMarkGreen = u'\U00002705'
+    CircleArrow = u'\U0001F504'
     QuestionMark = u'\U00002754'
     MarkWarning = u'\U000026A0'
     NoEntry = u'\U000026D4'
