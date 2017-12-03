@@ -43,6 +43,7 @@ class Country:
     Armenia = u'\U0001F1E6\U0001F1F2'
     Azerbaijan = u'\U0001F1E6\U0001F1FF'
     Belarus = u'\U0001F1E7\U0001F1FE'
+    China = u'\U0001F1E8\U0001F1F3'
     Estonia = u'\U0001F1EA\U0001F1EA'
     Georgia = u'\U0001F1EC\U0001F1EA'
     Kyrgyzstan = u'\U0001F1F0\U0001F1EC'
@@ -55,3 +56,4 @@ class Country:
     Turkmenistan = u'\U0001F1F9\U0001F1F2'
     Ukraine = u'\U0001F1FA\U0001F1E6'
     Uzbekistan = u'\U0001F1FA\U0001F1FF'
+    USA = u'\U0001F1FA\U0001F1F8'
