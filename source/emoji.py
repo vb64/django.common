@@ -35,6 +35,7 @@ class Button:
     WasteBasket = u'\U0001F5D1'
     ChequeredFlag = u'\U0001F3C1'
     Man = u'\U0001F468'
+    SpeakingHead = u'\U0001F5E3'
 
 
 class Country:
