@@ -28,7 +28,7 @@ class _DeHTMLParser(HTMLParser):
         return ''.join(self.__text).strip()
 
 
-def convert(text):
+def convert_old(text):
     try:
         parser = _DeHTMLParser()
         parser.feed(text)
@@ -38,3 +38,7 @@ def convert(text):
 
     except Exception as e:
         return str(e)
+
+
+def convert(text):
+    return sub(r'<.+?>', '', text)
