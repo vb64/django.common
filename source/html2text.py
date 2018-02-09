@@ -6,9 +6,14 @@ from re import sub
 class _DeHTMLParser(HTMLParser):
     def __init__(self):
         HTMLParser.__init__(self)
+        self.is_skip = False
         self.__text = []
 
     def handle_data(self, data):
+        if self.is_skip:
+            self.is_skip = False
+            return
+
         text = data.strip()
         if len(text) > 0:
             text = sub('[ \t\r\n]+', ' ', text)
@@ -19,6 +24,8 @@ class _DeHTMLParser(HTMLParser):
             self.__text.append('\n\n')
         elif tag == 'br':
             self.__text.append('\n')
+        elif tag == 'style':
+            self.is_skip = True
 
     def handle_startendtag(self, tag, attrs):
         if tag == 'br':
