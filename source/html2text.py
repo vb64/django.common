@@ -18,7 +18,7 @@ class _DeHTMLParser(HTMLParser):
 
         text = data.strip()
         if len(text) > 0:
-            text = sub('[ \t\r\n]+', ' ', text)
+            text = sub('[\t\r\n]+', '', text)
             self.__text.append(text + ' ')
             if self.html_link:
                 self.__text.append(self.html_link.encode('utf8'))
@@ -28,7 +28,7 @@ class _DeHTMLParser(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         if tag == 'p':
-            self.__text.append('\n\n')
+            self.__text.append('\n')
         elif tag == 'br':
             self.__text.append('\n')
         elif tag == 'style':
@@ -38,10 +38,6 @@ class _DeHTMLParser(HTMLParser):
                 link = dict(attrs).get('href', '')
                 if link.startswith('http'):
                     self.html_link = link
-
-    def handle_startendtag(self, tag, attrs):
-        if tag == 'br':
-            self.__text.append('\n\n')
 
     def text(self):
         return ''.join(self.__text).strip()
