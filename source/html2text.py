@@ -4,10 +4,12 @@ from re import sub
 
 
 class _DeHTMLParser(HTMLParser):
-    def __init__(self):
+    def __init__(self, extract_link):
         HTMLParser.__init__(self)
+        self.extract_link = extract_link
         self.is_skip = False
         self.__text = []
+        self.html_link = ''
 
     def handle_data(self, data):
         if self.is_skip:
@@ -18,6 +20,11 @@ class _DeHTMLParser(HTMLParser):
         if len(text) > 0:
             text = sub('[ \t\r\n]+', ' ', text)
             self.__text.append(text + ' ')
+            if self.html_link:
+                self.__text.append(self.html_link.encode('utf8'))
+                self.__text.append(' ')
+
+        self.html_link = ''
 
     def handle_starttag(self, tag, attrs):
         if tag == 'p':
@@ -26,6 +33,11 @@ class _DeHTMLParser(HTMLParser):
             self.__text.append('\n')
         elif tag == 'style':
             self.is_skip = True
+        elif tag == 'a':
+            if self.extract_link:
+                link = dict(attrs).get('href', '')
+                if link.startswith('http'):
+                    self.html_link = link
 
     def handle_startendtag(self, tag, attrs):
         if tag == 'br':
@@ -35,12 +47,12 @@ class _DeHTMLParser(HTMLParser):
         return ''.join(self.__text).strip()
 
 
-def convert(text):
+def convert(text, extract_link=False):
     if '</html>' not in text:
         return sub(r'<.+?>', '', text)
 
     try:
-        parser = _DeHTMLParser()
+        parser = _DeHTMLParser(extract_link)
         parser.feed(text)
         parser.close()
 
